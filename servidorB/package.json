@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "express": "^4.18.2",
-    "firebase": "^9.12.1"
+    "firebase": "^9.12.1",
+    "node-fetch": "^2.6.7"
   },
   "name": "atividade_container_02",
   "version": "1.0.0",

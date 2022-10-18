@@ -12,7 +12,8 @@ async function pegar(req, res){
 async function login(req, res){
     const usuarios = await crud.pegar("Users");
     const cpf = req.body.userCPF;
-    if(usuarios.findIndex(u => u.cpf == cpf) == -1){
+    console.log(cpf);
+    if(usuarios.findIndex(u => u.CPF == cpf) != -1){
         return true;
     }
     return false;

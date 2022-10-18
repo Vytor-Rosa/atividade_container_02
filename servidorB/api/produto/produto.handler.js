@@ -1,32 +1,25 @@
 const crud = require("../../crud/index");
+const fetch = require("node-fetch");
 
-async function login(req, res) {
-    await fetch('http://localhost:8080/api/usuario/login', 
-    {
-    method: 'GET', 
-    headers: {'Content-Type': 'application/json'}
-    })
-
-}
 
 async function cadastrar(req, res) {
     const produto = req.body;
 
-    // const verif = await fetch('http://destino:3000/api/login', 
-    // {method: 'GET',
-    // body: JSON.stringify({
-    //     description: produto.description,
-    //     name: produto.name,
-    //     price: produto.price,
-    //     userCPF: produto.userCPF
-    // }),
-    // headers: {'Content-Type': 'application/json'}})
-    // if(verif){
-    //     return await crud.salvar("Products", "", produto);
-    // }else{
-    //     return "usuario inexistente"
-    // }
-    return await crud.salvar("Products", "", produto);
+    const verif = await fetch('http://destino:3000/api/usuario/login', 
+    {method: 'POST',
+    body: JSON.stringify({
+        description: produto.description,
+        name: produto.name,
+        price: produto.price,
+        userCPF: produto.userCPF
+    }),
+    headers: {'Content-Type': 'application/json'}
+    })
+    if(verif){
+        return await crud.salvar("Products", "", produto);
+    }else{
+        return "usuario inexistente"
+    }
 }
 
 async function pegar(req, res) {
@@ -35,6 +28,5 @@ async function pegar(req, res) {
 
 module.exports = {
     cadastrar,
-    pegar,
-    login
+    pegar
 }
