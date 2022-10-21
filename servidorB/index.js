@@ -2,7 +2,7 @@ const express = require("express");
 const port = process.env.PORT || 3001; 
 const router = require("./router")
 const app = express();
-
+ 
 app.use(express.json());
 app.use("/api", router);
 app.get("/", (req, res)=> {res.json("opa maninho")})
